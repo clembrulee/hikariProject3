@@ -55,15 +55,17 @@ function App() {
       <header>
         <div className="wrapper headerContainer">
           <div className="nav">
-            <h1>Hikari</h1>
-            {/* <h2></h2> */}
+            <div className="titleText">
+              <h1>Hikari</h1>
+              <h2>Find your next anime to watch!</h2>
+            </div>
             <button onClick={handleAiringClick} >Top Currently Airing </button>
             <button onClick={handleUpcomingClick}>Most Anticipated Upcoming</button>
             <button>Season</button>
           </div>
           <div className="searchBar">
             <label htmlFor="search" className="srOnly">Search for an anime</label>
-            <input id="search" name="search" type="text" autocomplete="off" placeholder="Search for an anime"/>
+            <input id="search" name="search" type="text" autoComplete="off" placeholder="Search for an anime"/>
             <button id="submitButton" className="submitButton">Submit</button>
           </div>
         </div>
@@ -71,7 +73,7 @@ function App() {
       </header>
       <main>
         <div className="wrapper mainContainer">
-          <h2 className="pageTitle">Top 50 </h2>
+          <h2 className="pageTitle">Top 50 {category} anime </h2>
           <ul className="animeGrid">
             {/* li of anime */}
             {
@@ -87,6 +89,9 @@ function App() {
           </ul>
         </div>
       </main>
+      <footer>
+        <p>Created by Clement Sung at Juno College 2021</p>
+      </footer>
     </div>
   );
 }

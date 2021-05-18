@@ -10,15 +10,23 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@900&family=Reggae+One&display=swap');
 
-*{
-  border: 1px solid #e6d820;
+/* *{
+  border: 1px solid #e6d820; 
+} */
+
+html{
+  font-size: 62.5%
 }
 
 body{
-  background-color: rgb(65, 10, 82);
+  background-color: #410a52;
   color:#e6d820;
   /* font-family: 'Noto Sans JP', sans-serif; */
   font-family: 'Reggae One', cursive;
+}
+
+header{
+  background-color: #333;
 }
 
 .wrapper{
@@ -31,16 +39,34 @@ body{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  
+}
+
+.titleText{
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+  margin: 0;
+  font-size: 5rem;
+  text-decoration: underline;
 }
 
 .nav{
+  align-items: center;
   display: flex;
-  justify-content: flex-start;
   font-family: 'Reggae One', cursive;
+  justify-content: center;
+}
+
+.nav button{
+  border: 1px solid #e6d820;
+  padding: 15px;
 }
 
 input[type="text"]{
-  width: 70%;
+  width: 50%;
 }
 
 .searchBar {
@@ -59,6 +85,10 @@ input[type="text"]{
   grid-template-columns: repeat(3, 1fr);
 }
 
+h2{
+  font-size: 3rem;
+}
+
 ul{
   padding: 0;
 }
@@ -66,10 +96,12 @@ ul{
 h3{
   text-align: center;
   margin: 25px 0;
+  font-size: 2rem;
 }
 
 .pageTitle{
   text-align: center;
+  text-transform: capitalize;
   margin-bottom: 25px;
 }
 
@@ -96,6 +128,17 @@ button{
   color: #e6d820;
   cursor: pointer;
   font-family: 'Reggae One', cursive;
+  height: 50px;
   margin: 0 25px;
+  transition: all .5s ease;
 }
 
+button:hover,
+button:focus{
+  background: #e6d820;
+  color: #410a52;
+}
+
+footer p{
+
+}
