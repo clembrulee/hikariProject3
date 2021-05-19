@@ -1,10 +1,9 @@
 const AnimeResults = (props) => {
   
-  const {animeArray} = props;
+  const {animeArray, searchResultsArray} = props;
 	return (
     <div>
       <ul className="animeGrid">
-            {/* li of anime */}
             {
               animeArray.map(({animeName,animeRank, animeImage}, index) => {
                 return (
@@ -19,5 +18,11 @@ const AnimeResults = (props) => {
     </div>
 	)
 }
+
+<div className="animeResultsListContainer">
+  <ul>
+    
+  </ul>
+</div>
 
 export default AnimeResults;

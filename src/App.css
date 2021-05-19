@@ -157,6 +157,11 @@ button:focus{
   color: #410a52;
 }
 
+.animeResultsContainer{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 footer{
   background-color: #333;
 }
