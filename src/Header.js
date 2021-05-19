@@ -2,7 +2,7 @@ import Search from './Search.js'
 
 const Header = (props) => {
 
-	const {buttonHandler} = props
+	const {buttonHandler, onSearchReturned} = props
 
 	return(
 		<header>
@@ -12,13 +12,15 @@ const Header = (props) => {
 						<h1>Hikari</h1>
 						<h2>Find your next anime to watch!</h2>
 					</div>
-					<div className="menuButtons">
-						<button onClick={buttonHandler} id="airing">Top Currently Airing </button>
-						<button onClick={buttonHandler} id="upcoming">Most Anticipated Upcoming</button>
-						<button onClick={buttonHandler} id="tv">Top Anime TV</button>
-						<button onClick={buttonHandler} id="movie">Top Anime Movie</button>
+					<div className="menu">
+						<div className="menuButtons">
+							<button onClick={buttonHandler} id="airing">Top Currently Airing </button>
+							<button onClick={buttonHandler} id="upcoming">Most Anticipated Upcoming</button>
+							<button onClick={buttonHandler} id="tv">Top Anime TV</button>
+							<button onClick={buttonHandler} id="movie">Top Anime Movie</button>
+						</div>
+						<Search onSearchReturned={onSearchReturned}/>
 					</div>
-					<Search />
 				</div>
 			</div>
 		</header>

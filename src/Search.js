@@ -1,8 +1,9 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
-const Search = () => {
+const Search = (props) => {
+	const { onSearchReturned } = props;
+
 	const [searchQuery, setSearchQuery] = useState('');
-	const [selectedAnime, setSelectedAnime] = useState([]);
 
 	const userSearch = (() => {
 		let searchURL = new URL('https://api.jikan.moe/v3/search/anime?')
@@ -12,7 +13,7 @@ const Search = () => {
 				q: searchQuery,
 				order_by: "title",
 				sort: "asc",
-				rating: "g",
+				rating: "pg",
 				limit: 50
 			}
 		);
@@ -31,21 +32,20 @@ const Search = () => {
 						animeName: result.title
 					}
 				})
-				console.log(searchResults)
-				setSelectedAnime(searchResults);
+				onSearchReturned(searchResults, searchQuery);
 			})
 	})
 
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		// setSelectedAnime("")
+		userSearch();
 	}
 
 	const handleUserSearch = (event) => {
 		let inputValue = event.target.value
 		setSearchQuery(inputValue);
-		userSearch();
+		
 	}
 
 	return(
@@ -64,18 +64,6 @@ const Search = () => {
 				/>
 				<button id="submitButton" className="submitButton" type="submit">Submit</button>
 			</form>
-			<div className="animeResultsContainer">
-				{selectedAnime.map(({ animeImage, animeEpisodes, animeSynopsis, animeName}, index) => {
-				return (
-						<li key={index}>
-							<h3>{animeName}</h3>
-							<p># of Episodes {animeEpisodes}</p>
-							<p>{animeSynopsis}</p>
-							<img src={animeImage} alt={`promotional poster of ${animeName}`} />
-						</li>
-					)})
-				}
-			</div>
 		</div>
 	)
 }

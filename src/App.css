@@ -68,6 +68,10 @@ h1{
   font-family: 'Reggae One', cursive;
   justify-content: center;
 }
+.menu{
+  display: flex;
+  flex-direction: column;
+}
 
 .menuButtons button{
   border: 1px solid #e6d820;
@@ -76,14 +80,15 @@ h1{
 }
 
 input[type="text"]{
-  width: 70%;
+  width: 80%;
   font-size: 2rem;
-  margin-left: 20px;
-  line-height: 2;
+  padding: 12px;
 }
 
 .searchBar {
-  flex-basis: 40%;
+  display:flex;
+  align-items: center;
+  margin: 20px 0 0 10px;
 }
 
 .submitButton{
@@ -149,6 +154,7 @@ button{
   color: #e6d820;
   cursor: pointer;
   font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.2rem;
   height: 50px;
   margin: 0 10px;
   transition: all .5s ease;

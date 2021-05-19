@@ -5,31 +5,36 @@ import AnimeResults from './AnimeResults.js'
 import Footer from './Footer.js'
 
 function App() {
-  console.log(`app is rendering`)
-  
+  // create a state for anime list results to be stored and rendered
   const [animeList, setAnimeList] = useState([]);
+  // create category state to change based on user selection
   const [category, setCategory] = useState('airing');
-  
-  useEffect(() => {
+  // create a pageTitle state to change to content on page
+  const [pageTitle, setPageTitle]=useState('');
 
-    let baseURL ='https://api.jikan.moe/v3/top/anime/1/airing';
+  // side-effect for calling API when button categories are changed
+  useEffect(() => {
+    let url ='https://api.jikan.moe/v3/top/anime/1/airing';
 
     if (category === 'airing'){
-      baseURL = `https://api.jikan.moe/v3/top/anime/1/airing`;
+      url = `https://api.jikan.moe/v3/top/anime/1/airing`;
     }else if (category === 'upcoming'){
-      baseURL = `https://api.jikan.moe/v3/top/anime/1/upcoming`;
+      url = `https://api.jikan.moe/v3/top/anime/1/upcoming`;
     }else if(category === 'tv'){
-      baseURL = `https://api.jikan.moe/v3/top/anime/1/tv`;
+      url = `https://api.jikan.moe/v3/top/anime/1/tv`;
     }else if(category === 'movie'){
-      baseURL = `https://api.jikan.moe/v3/top/anime/1/movie`;
+      url = `https://api.jikan.moe/v3/top/anime/1/movie`;
+    }else if(category === ''){
+
     }
 
-    fetch(baseURL)
+    fetch(url)
       .then((response) => {
         return response.json();
       })
       .then((jsonResponse) => {
         const topAnime = jsonResponse.top.map((result) => {
+          // return object parameters for the new array
           return {
             animeName:result.title,
             animeImage:result.image_url,
@@ -38,18 +43,26 @@ function App() {
         })
             setAnimeList(topAnime);
       })
+
   }, [category])
   
-
+  // button handler for clicking 
   const handleButtonClick = ({ target }) => {
     setCategory(target.id)
   }
 
+  // function for returned data from search call
+  const onSearchReturned = (searchedResults, searchQuery) => {
+    setCategory('');
+    setAnimeList(searchedResults);
+    setPageTitle(searchQuery);
+  }
+
   return (
     <div>
-      <Header buttonHandler={handleButtonClick}/>
+      <Header buttonHandler={handleButtonClick} onSearchReturned={onSearchReturned}/>
       <main>
-          <AnimeResults animeArray={animeList} pageTitle={category}/>
+          <AnimeResults animeArray={animeList} pageTitle={category} searchTitle={pageTitle}/>
       </main>
       <Footer />
     </div>
