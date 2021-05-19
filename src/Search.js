@@ -13,7 +13,7 @@ const Search = (props) => {
 				q: searchQuery,
 				order_by: "title",
 				sort: "asc",
-				rating: "pg",
+				rated: "pg13",
 				limit: 50
 			}
 		);
@@ -45,7 +45,6 @@ const Search = (props) => {
 	const handleUserSearch = (event) => {
 		let inputValue = event.target.value
 		setSearchQuery(inputValue);
-		
 	}
 
 	return(

@@ -14,20 +14,12 @@ function App() {
 
   // side-effect for calling API when button categories are changed
   useEffect(() => {
-    let url ='https://api.jikan.moe/v3/top/anime/1/airing';
-
-    if (category === 'airing'){
-      url = `https://api.jikan.moe/v3/top/anime/1/airing`;
-    }else if (category === 'upcoming'){
-      url = `https://api.jikan.moe/v3/top/anime/1/upcoming`;
-    }else if(category === 'tv'){
-      url = `https://api.jikan.moe/v3/top/anime/1/tv`;
-    }else if(category === 'movie'){
-      url = `https://api.jikan.moe/v3/top/anime/1/movie`;
-    }else if(category === ''){
-
+    if(!category){
+      return
     }
-
+    
+    let url = `https://api.jikan.moe/v3/top/anime/1/${category}`;
+    
     fetch(url)
       .then((response) => {
         return response.json();
