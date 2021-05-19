@@ -1,8 +1,9 @@
 const AnimeResults = (props) => {
   
-  const {animeArray, searchResultsArray} = props;
+  const {animeArray, pageTitle} = props;
 	return (
-    <div>
+    <div className="wrapper mainContainer">
+      <h2 className="pageTitle">Top 50 anime {pageTitle} </h2>
       <ul className="animeGrid">
             {
               animeArray.map(({animeName,animeRank, animeImage}, index) => {
