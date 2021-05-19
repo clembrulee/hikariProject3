@@ -19,7 +19,7 @@ html{
 }
 
 body{
-  background-color: #410a52;
+  
   color:#e6d820;
   /* font-family: 'Noto Sans JP', sans-serif; */
   font-family: 'Reggae One', cursive;
@@ -53,6 +53,13 @@ h1{
   text-decoration: underline;
 }
 
+.titleText h2{
+  margin-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  flex-basis: 40%;
+}
+
 .nav{
   align-items: center;
   display: flex;
@@ -63,10 +70,13 @@ h1{
 .nav button{
   border: 1px solid #e6d820;
   padding: 15px;
+  margin-left: 15px;
 }
 
 input[type="text"]{
-  width: 50%;
+  width: 70%;
+  font-size: 2rem;
+  margin-left: 20px;
 }
 
 .searchBar {
@@ -74,23 +84,30 @@ input[type="text"]{
 }
 
 .submitButton{
-  margin: 0 30px;
+  margin: 0 10px;
   padding: 10px;
   border: 1px solid #e6d820;
 }
 
+main{
+  background-color: #410a52;
+}
+
 .animeGrid{
   display: grid;
-  gap: 5px; 
+  gap: 20px; 
   grid-template-columns: repeat(3, 1fr);
+  padding: 20px 0;
 }
 
 h2{
-  font-size: 3rem;
+  font-size: 2rem;
+  margin: 0;
 }
 
 ul{
   padding: 0;
+  margin: 0;
 }
 
 h3{
@@ -102,7 +119,8 @@ h3{
 .pageTitle{
   text-align: center;
   text-transform: capitalize;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  padding-top: 20px;
 }
 
 img{
@@ -129,7 +147,7 @@ button{
   cursor: pointer;
   font-family: 'Reggae One', cursive;
   height: 50px;
-  margin: 0 25px;
+  margin: 0 10px;
   transition: all .5s ease;
 }
 
@@ -139,6 +157,14 @@ button:focus{
   color: #410a52;
 }
 
-footer p{
+footer{
+  background-color: #333;
+}
 
+footer p{
+  color: #e6d820;
+  margin: 0 auto;
+  font-size: 2.5rem;
+  padding: 20px;
+  text-align: center;
 }

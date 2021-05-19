@@ -1,53 +1,98 @@
 import './App.css';
 import {useEffect, useState} from 'react'
-// import AnimeArray from './AnimeArray'
+// import Header from './Header.js'
+// import Search from './Search.js'
+import AnimeResults from './AnimeResults.js'
+import Footer from './Footer.js'
 
 function App() {
   console.log(`app is rendering`)
   
   const [animeList, setAnimeList] = useState([]);
-  const [category, setCategory] = useState([]);
-
+  const [category, setCategory] = useState('airing');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedAnime, setSelectedAnime] = useState([]);
 
   useEffect(() => {
-    console.log(`fetching data side-effect`)
+
     
     let baseURL ='https://api.jikan.moe/v3/top/anime/1/airing';
+
     if (category === 'airing'){
       baseURL = `https://api.jikan.moe/v3/top/anime/1/airing`;
     }else if (category === 'upcoming'){
       baseURL = `https://api.jikan.moe/v3/top/anime/1/upcoming`;
     }
 
-    console.log(`Fetching ${baseURL}...`)
     fetch(baseURL)
       .then((response) => {
         return response.json();
       })
       .then((jsonResponse) => {
-        console.log(jsonResponse.top)
-        const topAnime = jsonResponse.top.map((results) => {
+        const topAnime = jsonResponse.top.map((result) => {
           return {
-            animeName:results.title,
-            animeImage:results.image_url,
-            animeRank:results.rank
+            animeName:result.title,
+            animeImage:result.image_url,
+            animeRank:result.rank
           }
         })
-        console.log(topAnime)
-        
             setAnimeList(topAnime);
       })
-
   }, [category])
 
-  const handleAiringClick = () => {
-    console.log('Airing is clicked');
-    setCategory('airing');
+
+  useEffect(() => {
+    let searchURL = new URL('https://api.jikan.moe/v3/search/anime?')
+
+    const searchParams = new URLSearchParams(
+      {
+        q: searchQuery,
+        order_by: "title",
+        sort: "desc"
+      }
+    );
+
+    searchURL.search = searchParams
+    console.log(`Fetching ${searchURL}`)
+    fetch(searchURL)
+      .then((response) => {
+        // console.log(response)
+        return response.json();
+      }).then((jsonResponse) => {
+        console.log(jsonResponse)
+        const searchResults = jsonResponse.results.map((result) => {
+          return {
+            animeAiring: result.airing,
+            animeImage: result.image_url,
+            animeEpisodes: result.episodes,
+            animeSynopsis: result.synopsis,
+            animeName: result.title
+          }
+        })
+        console.log(searchResults)
+        // setSelectedAnime(searchResults);
+      })
+
+  }, [selectedAnime])
+
+
+
+  const handleButtonClick = ({ target }) => {
+    if (target.id === 'airingButton') {
+      setCategory('airing');
+    } else if (target.id === 'upcomingButton') {
+      setCategory('upcoming');
+    }
   }
 
-  const handleUpcomingClick = () => {
-    console.log('Upcoming is clicked');
-    setCategory('upcoming');
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSelectedAnime("")
+  }
+    
+  const handleUserSearch = (event) => {
+    let inputValue = event.target.value
+    setSearchQuery(inputValue);
   }
 
   return (
@@ -59,39 +104,34 @@ function App() {
               <h1>Hikari</h1>
               <h2>Find your next anime to watch!</h2>
             </div>
-            <button onClick={handleAiringClick} >Top Currently Airing </button>
-            <button onClick={handleUpcomingClick}>Most Anticipated Upcoming</button>
-            <button>Season</button>
+            <div className="navButtons">
+              <button onClick={handleButtonClick} id="airingButton">Top Currently Airing </button>
+              <button onClick={handleButtonClick} id="upcomingButton">Most Anticipated Upcoming</button>
+            </div>
           </div>
-          <div className="searchBar">
-            <label htmlFor="search" className="srOnly">Search for an anime</label>
-            <input id="search" name="search" type="text" autoComplete="off" placeholder="Search for an anime"/>
-            <button id="submitButton" className="submitButton">Submit</button>
-          </div>
+          <form onSubmit={handleSubmit} className="searchBar">
+            <label htmlFor="search" className="srOnly">Search for an anime for more info</label>
+            <input
+              id="search"
+              name="search"
+              type="text"
+              autoComplete="off"
+              placeholder="Search an anime for more info"
+              minLength="3"
+              value={searchQuery}
+              onChange={handleUserSearch}
+            />
+            <button id="submitButton" className="submitButton" type="submit">Submit</button>
+          </form>
         </div>
-        
       </header>
       <main>
         <div className="wrapper mainContainer">
           <h2 className="pageTitle">Top 50 {category} anime </h2>
-          <ul className="animeGrid">
-            {/* li of anime */}
-            {
-            animeList.map((anime, index) => {
-                return (
-                  <li key={index}>
-                    <h3>Rank#{anime.animeRank} {anime.animeName}</h3>
-                    <img src={anime.animeImage} alt={anime.animeName} />
-                  </li>
-                )
-              })
-            }
-          </ul>
+          <AnimeResults animeArray={animeList} searchResultsArray={selectedAnime}/>
         </div>
       </main>
-      <footer>
-        <p>Created by Clement Sung at Juno College 2021</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
