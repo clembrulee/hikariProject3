@@ -1,3 +1,4 @@
+// import components
 import './App.css';
 import {useEffect, useState} from 'react'
 import Header from './Header.js'
@@ -17,7 +18,7 @@ function App() {
     if(!category){
       return
     }
-    
+
     let url = `https://api.jikan.moe/v3/top/anime/1/${category}`;
     
     fetch(url)
@@ -50,6 +51,7 @@ function App() {
     setPageTitle(searchQuery);
   }
 
+  // Render onto page
   return (
     <div>
       <Header buttonHandler={handleButtonClick} onSearchReturned={onSearchReturned}/>

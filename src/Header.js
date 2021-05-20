@@ -14,10 +14,10 @@ const Header = (props) => {
 					</div>
 					<div className="menu">
 						<div className="menuButtons">
-							<button onClick={buttonHandler} id="airing">Top Currently Airing </button>
-							<button onClick={buttonHandler} id="upcoming">Most Anticipated Upcoming</button>
-							<button onClick={buttonHandler} id="tv">Top Anime TV</button>
-							<button onClick={buttonHandler} id="movie">Top Anime Movie</button>
+							<button onClick={buttonHandler} id="airing" tabIndex="0">Top Currently Airing </button>
+							<button onClick={buttonHandler} id="upcoming" tabIndex="0">Most Anticipated Upcoming</button>
+							<button onClick={buttonHandler} id="tv" tabIndex="0">Top Anime TV</button>
+							<button onClick={buttonHandler} id="movie" tabIndex="0">Top Anime Movie</button>
 						</div>
 						<Search onSearchReturned={onSearchReturned}/>
 					</div>

@@ -1,4 +1,6 @@
-import {useState} from 'react'
+import { useState } from 'react'
+import { FaSearch } from 'react-icons/fa'
+import { IconContext } from 'react-icons'
 
 const Search = (props) => {
 	const { onSearchReturned } = props;
@@ -61,7 +63,12 @@ const Search = (props) => {
 					value={searchQuery}
 					onChange={handleUserSearch}
 				/>
-				<button id="submitButton" className="submitButton" type="submit">Submit</button>
+				<button id="submitButton" className="submitButton" type="submit">
+					<span>Submit</span> 
+				<IconContext.Provider value={{ className: 'react-icons' }}>
+					<FaSearch />
+				</IconContext.Provider>
+				</button>
 			</form>
 		</div>
 	)
