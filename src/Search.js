@@ -1,12 +1,16 @@
+// import components to be used in Search component
 import { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { IconContext } from 'react-icons'
 
+// initialize search function 
 const Search = (props) => {
 	const { onSearchReturned } = props;
 
+	// initialize searchQuery state for user's search query
 	const [searchQuery, setSearchQuery] = useState('');
 
+	// create function for calling API when user's search is submitted
 	const userSearch = (() => {
 		let searchURL = new URL('https://api.jikan.moe/v3/search/anime?')
 
@@ -34,21 +38,24 @@ const Search = (props) => {
 						animeName: result.title
 					}
 				})
+				// return search results array and searchquery for title
 				onSearchReturned(searchResults, searchQuery);
 			})
 	})
 
-
+	// handle submit function on form submit
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		userSearch();
 	}
 
+	// handle user's search query
 	const handleUserSearch = (event) => {
 		let inputValue = event.target.value
 		setSearchQuery(inputValue);
 	}
 
+	// render form to page
 	return(
 		<div>
 			<form onSubmit={handleSubmit} className="searchBar">

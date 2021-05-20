@@ -1,9 +1,11 @@
+// Create animeresults component
 const AnimeResults = (props) => {
 
   // destructure props from App.js
   const {animeArray, pageTitle, searchTitle} = props;
   const animeText = document.querySelectorAll(`li p`)
-
+  
+  // needed padding styles for text that only generates from the search results
   if(!pageTitle){
     animeText.forEach((text) => {
       text.classList.add('animeTextPadding')
@@ -15,6 +17,7 @@ const AnimeResults = (props) => {
   }
   
 
+  // render results to page
 	return (
     <div className="wrapper mainContainer">
       <h2 className="pageTitle"> {pageTitle ? `Top 50 anime ${pageTitle}`: `Search results for "${searchTitle}"` }</h2>

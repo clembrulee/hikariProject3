@@ -207,6 +207,17 @@ footer p {
   text-align: center;
 }
 
+footer a{
+  color: #e6d820;
+  font-size: 2.5rem;
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus{
+  color:#b36103
+}
+
 @media (max-width:1150px){
   .menuButtons {
     display: grid;
@@ -240,5 +251,12 @@ footer p {
   .submitButton {
     width: 50px;
     height: 50px;
+  }
+}
+
+@media (max-width:500px){
+  .menuButtons {
+    display: flex;
+    flex-direction: column;
   }
 }

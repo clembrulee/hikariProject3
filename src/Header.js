@@ -1,9 +1,12 @@
+// import Search component to be used in the header section
 import Search from './Search.js'
 
+// Header component created
 const Header = (props) => {
-
+	// destructure props from App.js
 	const {buttonHandler, onSearchReturned} = props
 
+	// render header html elements
 	return(
 		<header>
 			<div className="wrapper headerContainer">
