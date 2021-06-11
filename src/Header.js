@@ -12,7 +12,7 @@ const Header = (props) => {
 			<div className="wrapper headerContainer">
 				<div className="nav">
 					<div className="titleText">
-						<h1>Hikari</h1>
+						<h1 onClick={handleTitleClick}>Hikari</h1>
 						<h2>Find your next anime to watch!</h2>
 					</div>
 					<div className="menu">

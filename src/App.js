@@ -51,10 +51,15 @@ function App() {
     setPageTitle(searchQuery);
   }
 
+  // handler for returning to initial page
+  const handleTitleClick = (() => {
+    setCategory('airing');
+  })
+
   // Render onto page
   return (
     <div>
-      <Header buttonHandler={handleButtonClick} onSearchReturned={onSearchReturned}/>
+      <Header handleTitleClick={handleTitleClick} buttonHandler={handleButtonClick} onSearchReturned={onSearchReturned}/>
       <main>
           <AnimeResults animeArray={animeList} pageTitle={category} searchTitle={pageTitle}/>
       </main>
