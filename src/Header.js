@@ -4,7 +4,7 @@ import Search from './Search.js'
 // Header component created
 const Header = (props) => {
 	// destructure props from App.js
-	const {buttonHandler, onSearchReturned} = props
+	const {buttonHandler, onSearchReturned, handleTitleClick} = props
 
 	// render header html elements
 	return(
