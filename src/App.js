@@ -19,7 +19,7 @@ function App() {
       return
     }
 
-    let url = `https://api.jikan.moe/v3/top/anime/1/${category}`;
+    let url = `https://api.jikan.moe/v4/top/anime/1/${category}`;
     
     fetch(url)
       .then((response) => {
