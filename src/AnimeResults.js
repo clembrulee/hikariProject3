@@ -20,7 +20,7 @@ const AnimeResults = (props) => {
   // render results to page
 	return (
     <div className="wrapper mainContainer">
-      <h2 className="pageTitle"> {pageTitle ? `Top 50 anime ${pageTitle}`: `Search results for "${searchTitle}"` }</h2>
+      <h2 className="pageTitle"> {pageTitle ? `Top 25 anime ${pageTitle}`: `Search results for "${searchTitle}"` }</h2>
       <ul className="animeGrid">
             {
                 animeArray.map(({ animeName, animeRank, animeImage, animeSynopsis, animeEpisodes }, index) => {

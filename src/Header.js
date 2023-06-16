@@ -18,7 +18,7 @@ const Header = (props) => {
 					<div className="menu">
 						<div className="menuButtons">
 							<button onClick={buttonHandler} id="airing" tabIndex="0">Top Currently Airing </button>
-							<button onClick={buttonHandler} id="upcoming" tabIndex="0">Most Anticipated Upcoming</button>
+							<button onClick={buttonHandler} id="bypopularity" tabIndex="0">Most Popular</button>
 							<button onClick={buttonHandler} id="tv" tabIndex="0">Top Anime TV</button>
 							<button onClick={buttonHandler} id="movie" tabIndex="0">Top Anime Movie</button>
 						</div>
