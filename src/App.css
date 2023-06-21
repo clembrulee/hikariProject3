@@ -165,6 +165,10 @@ li p {
   margin: 0 20px;
 }
 
+.animeInfo p{
+  padding: 5px 20px;
+}
+
 .animeTextPadding {
   padding: 20px;
 }
