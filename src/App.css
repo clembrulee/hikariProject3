@@ -127,6 +127,7 @@ h3{
   margin: 25px 0;
   font-size: 2rem;
   padding: 0 2rem;
+  min-height: 46px;
 }
 
 .pageTitle{
@@ -141,8 +142,10 @@ img{
   align-items: center;
   display: flex;
   justify-content: center;
-  max-width: 80%;
-  margin-bottom: 10px;
+  /* max-width: 80%; */
+  /* margin-bottom: 10px; */
+  margin: 30px auto;
+  max-height: 300px;
 }
 
 li{
